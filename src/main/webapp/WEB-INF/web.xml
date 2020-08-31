@@ -1,0 +1,82 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<web-app>
+	<display-name>Archetype Created Web Application</display-name>
+	
+	<servlet>
+		<servlet-name>RegisterServlet</servlet-name>
+		<display-name>RegisterServlet</display-name>
+		<servlet-class>com.learn.ecommerce.controllers.RegisterServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<display-name>LoginServlet</display-name>
+		<description></description>
+		<servlet-class>com.learn.ecommerce.controllers.LoginServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<display-name>LogoutServlet</display-name>
+		<description></description>
+		<servlet-class>com.learn.ecommerce.controllers.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CategoryServlet</servlet-name>
+		<display-name>CategoryServlet</display-name>
+		<description></description>
+		<servlet-class>com.learn.ecommerce.controllers.CategoryServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ProductServlet</servlet-name>
+		<display-name>ProductServlet</display-name>
+		<description></description>
+		<servlet-class>com.learn.ecommerce.controllers.ProductServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CartServlet</servlet-name>
+		<display-name>CartServlet</display-name>
+		<description></description>
+		<servlet-class>com.learn.ecommerce.controllers.CartServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>OrderServlet</servlet-name>
+		<display-name>OrderServlet</display-name>
+		<description></description>
+		<servlet-class>com.learn.ecommerce.controllers.OrderServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>RegisterServlet</servlet-name>
+		<url-pattern>/RegisterServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/LoginServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/LogoutServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CategoryServlet</servlet-name>
+		<url-pattern>/CategoryServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ProductServlet</servlet-name>
+		<url-pattern>/ProductServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CartServlet</servlet-name>
+		<url-pattern>/CartServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderServlet</servlet-name>
+		<url-pattern>/OrderServlet</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+</welcome-file-list>
+</web-app>
+
