@@ -12,7 +12,7 @@
 	//To prevent going back after Logout
 	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 	
-	if ( session.getAttribute("currentUser") == null) {
+	if (session.getAttribute("currentUser") == null) {
 		session.setAttribute("message", "Your are not logged in! Login first");
 		response.sendRedirect("login.jsp");
 		return;
@@ -62,7 +62,7 @@
 									<input type="text" name="category" value="<%=category.getCategoryTitle()%>" style="width:100%; height:100%;">
 								</td>
 								<td>
-									<form action="CategoryServlet" name="f1" method="post" onsubmit="return removeItem()">
+									<form action="Category" name="f1" method="post" onsubmit="return removeItem()">
 									<input type="hidden" name="categoryServlet" value="removeCategory">
 										<button class="btn btn-danger btn-sm" name="removeCategoryBtn"
 											value="<%=category.getCategoryId() %>">Remove</button>

@@ -35,7 +35,7 @@
 					
 					<div class="card-body px-4">
 					
-					<form action="RegisterServlet" name="f1" method="post" onsubmit="return validateRegister()">
+					<form action="Register" name="f1" method="post" onsubmit="return validateRegister()">
 					
 						<div class="form-group">
 					    <label for="name">User Name</label>

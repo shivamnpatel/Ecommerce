@@ -88,7 +88,7 @@
 									<!-- Cart details first saved to localStorage & then to session  -->
 									
 	
-									<form action="CartServlet" name="cart" method="post">
+									<form action="Cart" name="cart" method="post">
 										<input type="hidden" name="cartServlet" value="addToCart">
 										<%
 											ArrayList cartItems = new ArrayList();

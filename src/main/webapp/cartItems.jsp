@@ -66,7 +66,7 @@
 							<td><%=cart.getTotalPrice() %></td>
 							
 							<td>
-							<form action="CartServlet" method="post">
+							<form action="Cart" method="post">
 								<input type="hidden" name="cartServlet" value="removeFromCart">
 								<button class="btn btn-danger btn-sm" name="removeFromCartBtn" value="<%=cart.getItemId() %>">Remove</button>
 							</form>

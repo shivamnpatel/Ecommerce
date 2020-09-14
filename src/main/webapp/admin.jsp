@@ -99,7 +99,7 @@
 						<img style="width: 120px" class="container-fluid rounded-circle"
 							src="images/product.png" alt="product">
 						<h3><%=pDao.listAllProducts().size()%></h3>
-						<h3 >Products</h3>
+						<h3>Products</h3>
 
 					</div>
 
@@ -125,7 +125,7 @@
 
 						
 						<!-- display order total here -->
-						<h3 class="mt-2">Orders</h3>
+						<h3 class="mt-2">Orders (<%=orderDao.listAllOrders().size() %>)</h3>
 
 					</div>
 
@@ -136,8 +136,7 @@
 			<!-- 2nd row Second column -->
 			<div class="col-md-4">
 
-				<div class="card" data-toggle="modal"
-					data-target="#add-new-category">
+				<div class="card" data-toggle="modal" data-target="#add-new-category">
 					<!-- First card -->
 
 					<div class="card-body text-center">
@@ -194,7 +193,7 @@
 				</div>
 				<div class="modal-body">
 
-					<form action="CategoryServlet" method="post">
+					<form action="Category" method="post">
 
 						<input type="hidden" name="categoryServlet" value="addCategory">
 						<div class="form-group">
@@ -244,7 +243,7 @@
 				</div>
 				<div class="modal-body">
 
-					<form action="ProductServlet" method="post"	enctype="multipart/form-data">
+					<form action="Product" method="post" enctype="multipart/form-data">
 					
 						<input type="hidden" name="productServlet" value="addProduct">
 

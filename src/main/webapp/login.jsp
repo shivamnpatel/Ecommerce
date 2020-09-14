@@ -36,7 +36,7 @@
 						
 					<div class="card-body px-4">
 					
-						<form name="loginForm" action="LoginServlet" method="post" onsubmit="return validateLogin()">
+						<form name="loginForm" action="Login" method="post" onsubmit="return validateLogin()">
 						
 							  <div class="form-group">
 							    <label for="email">Email address</label>

@@ -72,7 +72,7 @@
 							<td><%=product.getpDiscount()%></td>
 							
 							<td>
-								<form action="ProductServlet" name="f1" method="post" onsubmit="return removeItem()">
+								<form action="Product" name="f1" method="post" onsubmit="return removeItem()">
 								<input type="hidden" name="productServlet" value="removeProduct">
 									<button class="btn btn-danger btn-sm" name="removeProductBtn" value="<%=product.getpId() %>">Remove</button>
 								</form>

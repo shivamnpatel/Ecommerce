@@ -4,14 +4,14 @@
 <%
 	ArrayList<Cart> cartList = (ArrayList<Cart>)session.getAttribute("cartItems");
 	int cartQuantity = 0;
-	// checking for NullPointerException 
+	// checking for NullPointerException
 	if(cartList!=null)
 		cartQuantity = cartList.size();
 
 %>
 
 <nav class="navbar navbar-expand-lg navbar-dark navbar-bg">
-  <div class="container">
+  
   	<a class="navbar-brand" href="index.jsp">Ecommerce</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -51,7 +51,7 @@
 	   		        <a class="nav-link" href="my-orders.jsp">My Orders</a> 
 	   		    </li>
 	  		   	<li class="nav-item active">
-	   		        <a class="nav-link" href="LogoutServlet">Logout</a> 
+	   		        <a class="nav-link" href="Logout">Logout</a> 
 	   		    </li>
    		   
    	    	</ul>	
@@ -80,5 +80,5 @@
    	%>
    
   </div>
-  </div>
+  
 </nav>

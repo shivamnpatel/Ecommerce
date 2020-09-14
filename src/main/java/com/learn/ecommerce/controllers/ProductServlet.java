@@ -67,19 +67,25 @@ public class ProductServlet extends HttpServlet {
 			// uploading photo to directory
 
 			// path to upload photo
-			String pathOfPhoto = request.getServletContext().getRealPath("images") + File.separator + "products"
-					+ File.separator + partPhoto.getSubmittedFileName();
-			System.out.println(pathOfPhoto);
+			try 
+			{
+				String pathOfPhoto = request.getServletContext().getRealPath("images") + File.separator + "products"
+						+ File.separator + partPhoto.getSubmittedFileName();
+				System.out.println(pathOfPhoto);
 
-			// writing code to upload photo in that path (folder)
-			FileOutputStream fos = new FileOutputStream(pathOfPhoto);
-			InputStream is = partPhoto.getInputStream();
+				// writing code to upload photo in that path (folder)
+				FileOutputStream fos = new FileOutputStream(pathOfPhoto);
+				InputStream is = partPhoto.getInputStream();
 
-			// reading data
-			byte data[] = new byte[is.available()]; // is.available() gives the size of byte needed for Photo
-			is.read(data);
-			fos.write(data);
-			fos.close();
+				// reading data
+				byte data[] = new byte[is.available()]; // is.available() gives the size of byte needed for Photo
+				is.read(data);
+				fos.write(data);
+				fos.close();	
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 			// Providing message on page that product is added successfully...
 			HttpSession httpSession = request.getSession();

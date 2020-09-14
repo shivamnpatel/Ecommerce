@@ -24,7 +24,7 @@ public class CategoryServlet extends HttpServlet {
 			String categoryTitle = request.getParameter("catTitle");
 			String categoryDescription = request.getParameter("catDesc");
 			
-			//Server side validations 
+			//validations 
 			
 			Category category = new Category();
 			category.setCategoryTitle(categoryTitle);
