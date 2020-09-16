@@ -1,11 +1,9 @@
 package com.learn.ecommerce.controllers;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Paths;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -32,18 +30,29 @@ public class ProductServlet extends HttpServlet {
 		{
 			String productName = request.getParameter("pName");
 			String productDescription = request.getParameter("pDesc");
-			Part partPhoto = request.getPart("pPhoto");
 			int productPrice = Integer.parseInt(request.getParameter("pPrice"));
 			int productDiscount = Integer.parseInt(request.getParameter("pDiscount"));
 			int productQuantity = Integer.parseInt(request.getParameter("pQuantity"));
 			int categoryId = Integer.parseInt(request.getParameter("catId"));
 
-//			productPhoto.getSubmittedFileName();
-
+			//////////////////////////////// Image upload
+			
+			Part filePart = request.getPart("pPhoto"); // Retrieves <input type="file" name="pPhoto">
+			String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
+			InputStream fileContent = filePart.getInputStream();
+			byte[] bFile = new byte[fileContent.available()];
+			fileContent.read(bFile);
+			
+			System.out.println("File name: "+fileName);
+			
+			///////////////////////////////
+			
+			
 			Product product = new Product();
 			product.setpName(productName);
 			product.setpDesc(productDescription);
-			product.setpPhoto(partPhoto.getSubmittedFileName()); // gets the filename of photo
+			
+			product.setpPhoto(bFile); // gets the filename of photo
 			product.setpPrice(productPrice);
 			product.setpDiscount(productDiscount);
 			product.setpQuantity(productQuantity);
@@ -62,29 +71,6 @@ public class ProductServlet extends HttpServlet {
 				request.getSession().setAttribute("message", "Error adding product");
 				response.sendRedirect("admin.jsp");
 				return;
-			}
-
-			// uploading photo to directory
-
-			// path to upload photo
-			try 
-			{
-				String pathOfPhoto = request.getServletContext().getRealPath("images") + File.separator + "products"
-						+ File.separator + partPhoto.getSubmittedFileName();
-				System.out.println(pathOfPhoto);
-
-				// writing code to upload photo in that path (folder)
-				FileOutputStream fos = new FileOutputStream(pathOfPhoto);
-				InputStream is = partPhoto.getInputStream();
-
-				// reading data
-				byte data[] = new byte[is.available()]; // is.available() gives the size of byte needed for Photo
-				is.read(data);
-				fos.write(data);
-				fos.close();	
-				
-			} catch (Exception e) {
-				e.printStackTrace();
 			}
 
 			// Providing message on page that product is added successfully...

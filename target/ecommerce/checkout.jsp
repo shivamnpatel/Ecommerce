@@ -116,39 +116,39 @@
 
 					<div class="card-body">
 
-						<form name="checkout" method="post" action="OrderServlet"
+						<form name="checkout" method="post" action="Order"
 							onsubmit="return validateCheckoutDetails()">
 
 							
 							<div class="form-group">
-								<label for="name">Your Name</label> <input type="text"
-									name="cust_name" class="form-control" id="name"
+								<label for="name">Your Name</label> 
+								<input type="text" name="cust_name" class="form-control" id="name"
 									value="<%=user.getUserName()%>" placeholder="Enter name here">
 							</div>
 							<div class="form-group">
-								<label for="email">Your Email address</label> <input
-									type="email" name="cust_email" class="form-control" id="email"
+								<label for="email">Your Email address</label>
+								<input type="email" name="cust_email" class="form-control" id="email"
 									value="<%=user.getUserEmail()%>" placeholder="Enter email here">
 							</div>
 							<div class="form-group">
-								<label for="phone">Your Mobile number</label> <input
-									type="text" name="cust_mobile" class="form-control"
+								<label for="phone">Your Mobile number</label>
+								<input type="text" name="cust_mobile" class="form-control"
 									id="phone" value="<%=user.getUserPhone()%>"
 									placeholder="Enter phone number here">
 							</div>
 							<div class="form-group">
-								<label for="state">State</label> <input type="text"
-									name="cust_state" class="form-control" id="state"
+								<label for="state">State</label>
+								<input type="text" name="cust_state" class="form-control" id="state"
 									placeholder="Enter state here">
 							</div>
 							<div class="form-group">
-								<label for="city">City</label> <input type="text"
-									name="cust_city" class="form-control" id="city"
+								<label for="city">City</label>
+								<input type="text" name="cust_city" class="form-control" id="city"
 									placeholder="Enter city here">
 							</div>
 							<div class="form-group">
-								<label for="pincode">Pincode</label> <input
-									type="number" name="cust_pincode" class="form-control"
+								<label for="pincode">Pincode</label> 
+								<input type="number" name="cust_pincode" class="form-control"
 									id="pincode" placeholder="Enter pincode here">
 							</div>
 							<div class="form-group">

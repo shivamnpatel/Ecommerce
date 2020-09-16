@@ -3,6 +3,7 @@ package com.learn.ecommerce.controllers;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,16 +21,22 @@ public class LoginServlet extends HttpServlet {
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		HttpSession httpSession = request.getSession();
+		
 		try {
 		
 			String userEmail = request.getParameter("user_email");
 			String userPassword = request.getParameter("user_password");
-			
+			HttpSession oldSession = request.getSession(false);
+			 
+            if (oldSession != null) {
+                oldSession.invalidate();
+            }
+	            
+            HttpSession newSession = request.getSession(true);
 			// validations
 			if(userEmail.isEmpty() || userPassword.isEmpty())
 			{
-				httpSession.setAttribute("message", "Please enter all details!!");
+				newSession.setAttribute("message", "Please enter all details!!");
 				response.sendRedirect("login.jsp");
 				return;
 			}
@@ -41,24 +48,29 @@ public class LoginServlet extends HttpServlet {
 			
 			if(user!=null)
 			{
-				httpSession.setAttribute("currentUser",user);
+				newSession.setAttribute("currentUser",user);
 				// admin 
-				if(user.getUserType().equals("admin")) {
-					response.sendRedirect("admin.jsp");
+				if(user.getUserType().equals("admin")) 
+				{
+					String adminPage = "/WEB-INF/views/admin.jsp";
+					RequestDispatcher dispatcher = request.getRequestDispatcher(adminPage);
+					dispatcher.forward(request, response);
 				}
 				// normal user
-				else if(user.getUserType().equals("normal")) {
+				else if(user.getUserType().equals("normal")) 
+				{
 					response.sendRedirect("index.jsp");
 				}
-				else {
+				else 
+				{
 					out.println("Sorry we couldn't verify your user type");
 				}
 				
 			}
 			else
 			{
-				httpSession = request.getSession();
-				httpSession.setAttribute("message", "Invalid email or password!!");
+				newSession = request.getSession();
+				newSession.setAttribute("message", "Invalid email or password!!");
 				response.sendRedirect("login.jsp");
 				return;
 			}

@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -16,7 +17,8 @@ public class Product {
 	private String pName;
 	@Column(length = 3000)
 	private String pDesc;
-	private String pPhoto;
+	@Lob
+	private byte[] pPhoto;
 	private int pPrice;
 	private int pDiscount;
 	private int pQuantity;
@@ -27,7 +29,7 @@ public class Product {
 	
 	}
 
-	public Product(String pName, String pDesc, String pPhoto, int pPrice, int pDiscount, int pQuantity,
+	public Product(String pName, String pDesc, byte[] pPhoto, int pPrice, int pDiscount, int pQuantity,
 			Category category) {
 		super();
 		this.pName = pName;
@@ -63,11 +65,11 @@ public class Product {
 		this.pDesc = pDesc;
 	}
 
-	public String getpPhoto() {
+	public byte[] getpPhoto() {
 		return pPhoto;
 	}
 
-	public void setpPhoto(String pPhoto) {
+	public void setpPhoto(byte[] pPhoto) {
 		this.pPhoto = pPhoto;
 	}
 
@@ -102,13 +104,13 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Product [pId=" + pId + ", pName=" + pName + ", pDesc=" + pDesc + ", pPhoto=" + pPhoto + ", pPrice="
-				+ pPrice + ", pDiscount=" + pDiscount + ", pQuantity=" + pQuantity + ", category=" + category + "]";
+		return "Product [pId=" + pId + ", pName=" + pName + ", pDesc=" + pDesc + ", pPrice=" + pPrice + ", pDiscount="
+				+ pDiscount + ", pQuantity=" + pQuantity + "]";
 	}
-	
+
 	public int getProductPriceAfterDiscount() {
 		
 		int disc = (int)((this.pDiscount/100.0)*this.pPrice);

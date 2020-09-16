@@ -6,6 +6,9 @@
 <%@page import="java.util.List"%>
 <%@page import="com.learn.ecommerce.dao.CategoryDao"%>
 <%@page import="com.learn.ecommerce.helper.FactoryProvider"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <html>
 <head>
 
@@ -29,10 +32,14 @@
 			} else {
 				//int cId = Integer.parseInt(catId.trim());
 				prodList = productDao.getProductByCatName(catName);
+				
 			}
-	
+			request.setAttribute("prodList", prodList);
+			
 			CategoryDao categoryDao = new CategoryDao(FactoryProvider.getSessionFactory());
-			List<Category> catList = categoryDao.listCategories();
+			ArrayList<Category> catList =(ArrayList<Category>) categoryDao.listCategories();
+			
+			request.setAttribute("catList", catList);
 		%>
 
 		<!-- Column for categories -->
@@ -43,16 +50,15 @@
 					class="list-group-item list-group-item-action active">All
 					Products</a>
 
+	
 				<!-- iterating over the product categories -->
-				<%
-					for (Category c : catList) {
-				%>
-				<a id="highlight" class="list-group-item list-group-item-action"
-					href="index.jsp?category=<%=c.getCategoryTitle()%>"><%=c.getCategoryTitle()%></a>
-				<%
-					}
-				%>
+				<c:forEach items="${catList}" var="category">
+				
+					<a id="highlight" class="list-group-item list-group-item-action"
+						href="index.jsp?category=${category.getCategoryTitle()}">
+						${category.getCategoryTitle() }</a>
 
+				</c:forEach>
 			</div>
 
 		</div>
@@ -63,70 +69,61 @@
 			<div class="row">
 			
 				<!-- Iterating over products -->
-						<%
-							if (prodList.size() != 0) {
-							for (Product p : prodList) {
-						%>
-						
-						<div class="col-md-4">
-						
-							<div class="card mt-2">
-
-								<div class="text-center ">
-									<img src="images/products/<%=p.getpPhoto()%>"
-										alt="image of product" class="product-photo">
+						<c:if test="${prodList.size()!=0}">
+							
+							<c:forEach var="product" items="${prodList}">
+							
+								<div class="col-md-4">
+		
+									<div class="card mt-2">
+		
+										<div class="text-center">
+											<img src="ProductImage?pId=${product.getpId()}"
+												alt="image of product" class="product-photo">
+										</div>
+		
+										<div class="card-body">
+											<h6 class="card-title">${product.getpName()}</h6>
+											<p class="card-text">
+												<jsp:useBean id="desc" class="com.learn.ecommerce.helper.DescriptionHelper"/>
+													${desc.longDescToShort(pageContext.getAttribute("product").getpDesc())}
+											</p>
+										</div>
+		
+										<div class="card-footer text-center">
+		
+											<!-- Add to Cart Button -->
+		
+											<form action="Cart" name="cart" method="post">
+												<input type="hidden" name="cartServlet" value="addToCart">
+												<%
+													ArrayList cartItems = new ArrayList();
+													cartItems.add(pageContext.getAttribute("product"));
+												%>
+		
+												<button class="btn btn-primary" name="addToCartBtn"
+													onclick="addToCartMsg()" value="${product.getpId()}">Add
+													to Cart</button>
+		
+												<!-- Showing Product Price  -->
+												<span class="btn btn-success"> &#8377; ${product.getProductPriceAfterDiscount()}
+													<span class="text-secondary product-price">&#8377; ${product.getpPrice()}</span>
+													<span class="font-italic product-disc">${product.getpDiscount()}%
+														off</span>
+												</span>
+		
+											</form>
+		
+		
+										</div>
+		
+									</div>
+		
 								</div>
 
-								<div class="card-body">
-											<h6 class="card-title"><%=p.getpName()%></h6>
-											<p class="card-text"><%=DescriptionHelper.longDescToShort(p.getpDesc())%></p>
-								</div>
-								
-								<div class="card-footer text-center">
-
-									<!-- Add to Cart Button -->
-									<!-- Cart details first saved to localStorage & then to session  -->
-									
-	
-									<form action="Cart" name="cart" method="post">
-										<input type="hidden" name="cartServlet" value="addToCart">
-										<%
-											ArrayList cartItems = new ArrayList();
-											cartItems.add(p);
-										%>			
-															
-										<button class="btn btn-primary" name="addToCartBtn" onclick="addToCartMsg()"
-											value="<%=p.getpId()%>">Add to Cart</button>
-	
-										<!-- Showing Product Price  -->
-										<span class="btn btn-success"> &#8377;
-											<%=p.getProductPriceAfterDiscount()%>
-											<span class="text-secondary product-price">&#8377; <%=p.getpPrice()%></span>
-											<span class="font-italic product-disc"><%=p.getpDiscount()%>% off</span>
-										</span>
-										
-									</form>
-									
-
-							</div>
-								
-							</div>
-						
-						</div>
-						
-						<%
-								}
-							}
-							else
-							{
+							</c:forEach>
 							
-							%>
-								<h4>There are no products in this category!</h4>
-							
-							<%
-							}
-						%>
-			
+						</c:if>
 			</div>
 			
 		</div>

@@ -11,6 +11,7 @@ com\learn\ecommerce\controllers\ProductServlet.class
 com\learn\ecommerce\model\Order.class
 com\learn\ecommerce\model\Product.class
 com\learn\ecommerce\dao\ProductDao.class
+com\learn\ecommerce\controllers\ProductImageServlet.class
 com\learn\ecommerce\dao\CategoryDao.class
 com\learn\ecommerce\controllers\CartServlet.class
 com\learn\ecommerce\dao\UserDao.class

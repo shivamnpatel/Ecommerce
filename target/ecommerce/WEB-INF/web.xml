@@ -45,10 +45,22 @@
 		<description></description>
 		<servlet-class>com.learn.ecommerce.controllers.OrderServlet</servlet-class>
 	</servlet>
-	
+	<servlet>
+		<servlet-name>ProductImageServlet</servlet-name>
+		<display-name>ProductImageServlet</display-name>
+		<description></description>
+		<servlet-class>com.learn.ecommerce.controllers.ProductImageServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AdminServlet</servlet-name>
+		<display-name>AdminServlet</display-name>
+		<description></description>
+		<servlet-class>com.learn.ecommerce.controllers.AdminServlet</servlet-class>
+	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>RegisterServlet</servlet-name>
-		<url-pattern>/RegisterServlet</url-pattern>
+		<url-pattern>/Register</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
@@ -74,9 +86,19 @@
 		<servlet-name>OrderServlet</servlet-name>
 		<url-pattern>/Order</url-pattern>
 	</servlet-mapping>
-	
+	<servlet-mapping>
+		<servlet-name>ProductImageServlet</servlet-name>
+		<url-pattern>/ProductImage</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdminServlet</servlet-name>
+		<url-pattern>/admin</url-pattern>
+	</servlet-mapping>
+
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
-</welcome-file-list>
+	</welcome-file-list>
+
+
 </web-app>
 

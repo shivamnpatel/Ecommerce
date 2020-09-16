@@ -9,8 +9,10 @@ C:\Eclipse Workspace\ecommerce\src\main\java\com\learn\ecommerce\helper\FactoryP
 C:\Eclipse Workspace\ecommerce\src\main\java\com\learn\ecommerce\controllers\RegisterServlet.java
 C:\Eclipse Workspace\ecommerce\src\main\java\com\learn\ecommerce\dao\OrderDao.java
 C:\Eclipse Workspace\ecommerce\src\main\java\com\learn\ecommerce\controllers\OrderServlet.java
+C:\Eclipse Workspace\ecommerce\src\main\java\com\learn\ecommerce\controllers\AdminServlet.java
 C:\Eclipse Workspace\ecommerce\src\main\java\com\learn\ecommerce\helper\DescriptionHelper.java
 C:\Eclipse Workspace\ecommerce\src\main\java\com\learn\ecommerce\controllers\ProductServlet.java
+C:\Eclipse Workspace\ecommerce\src\main\java\com\learn\ecommerce\controllers\ProductImageServlet.java
 C:\Eclipse Workspace\ecommerce\src\main\java\com\learn\ecommerce\dao\CartDao.java
 C:\Eclipse Workspace\ecommerce\src\main\java\com\learn\ecommerce\dao\UserDao.java
 C:\Eclipse Workspace\ecommerce\src\main\java\com\learn\ecommerce\model\Cart.java
