@@ -1,4 +1,4 @@
-# Ecommerce Site
+# Ecommerce Website
 An Ecommerce website built using Java technologies like JSP, Servlet &amp; Hibernate.
 
-### Live: http://65.0.13.175:8080/ecommerce/
+### Live: [Ecommerce Website](http://65.0.13.175:8080/ecommerce/)
