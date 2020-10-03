@@ -48,8 +48,7 @@
 							    <input type="password" name="user_password" class="form-control" id="password" placeholder="Password">
 							  </div>
 							  
-							  <a href="register.jsp">New User? Register here</a>
-							  <a class="text-muted mx-4" href="#">Forgot Password?</a> 
+							  <a href="register.jsp">New User? Register here</a> 
 							  <div class="container text-center mt-3">
 							  	<button type="submit" class="btn btn-success">Login</button>
 							  	

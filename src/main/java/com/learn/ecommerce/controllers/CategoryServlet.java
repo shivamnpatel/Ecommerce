@@ -52,11 +52,11 @@ public class CategoryServlet extends HttpServlet {
 		
 		else if(requestType.equals("updateCategory"))
 		{
-			int catId = Integer.parseInt(request.getParameter("updateCategoryBtn"));
+			//int catId = Integer.parseInt(request.getParameter("updateCategoryBtn"));
 			CategoryDao categoryDao = new CategoryDao(FactoryProvider.getSessionFactory());
-			String catTitle = request.getParameter("mydata");
-			System.out.println("Category title to be changed is: "+catTitle);
-			categoryDao.updateCategory(catId,catTitle);
+			int catId = Integer.parseInt(request.getParameter("categoryId"));
+			System.out.println("Category id to be changed is: "+catId);
+		//	categoryDao.updateCategory(catId);
 			response.sendRedirect("list-categories.jsp");
 			return;
 		}

@@ -66,7 +66,9 @@ public class CategoryDao {
 	} 
 	
 	// updating category by categoryId
-	public void updateCategory(int catId,String catTitle) {
+/*
+  	public void updateCategory(int catId) {
+ 
 		
 		Session sess = this.sessionFactory.openSession();
 		Transaction transaction = sess.beginTransaction();
@@ -79,5 +81,6 @@ public class CategoryDao {
 		sess.close();
 		
 	} 
+*/
 
 }

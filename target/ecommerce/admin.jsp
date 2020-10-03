@@ -6,23 +6,15 @@
 <%@page import="com.learn.ecommerce.helper.FactoryProvider"%>
 <%@page import="com.learn.ecommerce.dao.CategoryDao"%>
 <%@page import="com.learn.ecommerce.model.User"%>
-<%
-	//To prevent going back after Logout
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	
-	User user = (User) session.getAttribute("currentUser");
-	if (user == null) {
-		session.setAttribute("message", "Your are not logged in! Login first");
-		response.sendRedirect("login.jsp");
-		return;
-	} else if (user.getUserType().equals("normal")) {
-		session.setAttribute("message", "Your are not an admin!!");
-		response.sendRedirect("login.jsp");
-		return;
-	}
-%>
 
 <%
+	User user = (User) session.getAttribute("currentUser");
+
+	if (user==null || !user.getUserType().equals("admin")) {
+	session.setAttribute("message", "You don't have access to this page");
+	response.sendRedirect("login.jsp");
+	return;
+}
 	UserDao uDao = new UserDao(FactoryProvider.getSessionFactory());
 	ProductDao pDao = new ProductDao(FactoryProvider.getSessionFactory());
 	CategoryDao cDao = new CategoryDao(FactoryProvider.getSessionFactory());
@@ -36,13 +28,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Admin</title>
-<%@include file="components/common_css_js.jsp"%>
+<%@include file="/components/common_css_js.jsp"%>
 </head>
 <body>
 
 	<div style="width: 800px" class="container admin">
 
-		<%@include file="components/message.jsp"%>
+		<%@include file="/components/message.jsp"%>
 
 		<div class="row mt-3">
 			<!-- First row -->
@@ -53,7 +45,8 @@
 				<div class="card">
 					<!-- First card -->
 
-					<div class="card-body text-center" onclick="window.location.href='list-users.jsp'">
+					<div class="card-body text-center"
+						onclick='window.location.href="admin?page=users"'>
 
 						<img style="width: 120px" class="container-fluid rounded-circle"
 							src="images/users.png" alt="users">
@@ -73,10 +66,11 @@
 				<div class="card">
 					<!-- Second card -->
 
-					<div class="card-body text-center" onclick="window.location.href='list-categories.jsp'">
+					<div class="card-body text-center"
+						onclick='window.location.href="admin?page=categories"'>
 
-							<input type="hidden" name="categoryServlet" value="listCategory">
-							
+						<input type="hidden" name="categoryServlet" value="listCategory">
+
 						<img style="width: 120px" class="container-fluid rounded-circle"
 							src="images/category.png" alt="category">
 						<h3><%=cDao.listCategories().size()%></h3>
@@ -94,7 +88,8 @@
 				<div class="card">
 					<!-- Third card -->
 
-					<div class="card-body text-center" onclick="window.location.href='list-products.jsp'">
+					<div class="card-body text-center"
+						onclick='window.location.href="admin?page=products"'>
 
 						<img style="width: 120px" class="container-fluid rounded-circle"
 							src="images/product.png" alt="product">
@@ -118,14 +113,17 @@
 				<div class="card">
 					<!-- First card -->
 
-					<div class="card-body text-center" onclick="window.location.href='list-orders.jsp'">
+					<div class="card-body text-center"
+						onclick='window.location.href="admin?page=orders"'>
 
 						<img style="width: 120px" class="container-fluid rounded-circle"
 							src="images/purchases.png" alt="orders">
 
-						
+
 						<!-- display order total here -->
-						<h3 class="mt-2">Orders (<%=orderDao.listAllOrders().size() %>)</h3>
+						<h3 class="mt-2">
+							Orders (<%=orderDao.listAllOrders().size()%>)
+						</h3>
 
 					</div>
 
@@ -136,7 +134,8 @@
 			<!-- 2nd row Second column -->
 			<div class="col-md-4">
 
-				<div class="card" data-toggle="modal" data-target="#add-new-category">
+				<div class="card" data-toggle="modal"
+					data-target="#add-new-category">
 					<!-- First card -->
 
 					<div class="card-body text-center">
@@ -244,7 +243,7 @@
 				<div class="modal-body">
 
 					<form action="Product" method="post" enctype="multipart/form-data">
-					
+
 						<input type="hidden" name="productServlet" value="addProduct">
 
 						<div class="form-group">
@@ -280,34 +279,36 @@
 						</div>
 
 						<div class="form-group">
-							<label for="photo">Select Category of Product</label><br> 
-							<select	name="catId" class="form-control" required>
+							<label for="photo">Select Category of Product</label><br> <select
+								name="catId" class="form-control" required>
 
 								<!-- getting list of categories from database -->
 								<%
 									CategoryDao categoryDao = new CategoryDao(FactoryProvider.getSessionFactory());
-									List<Category> list = categoryDao.listCategories();
-									for (Category c : list) {
-									%>
-									<option value="<%=c.getCategoryId()%>"><%=c.getCategoryTitle()%></option>
-	
-									<%
-										}
-									%>
+								List<Category> list = categoryDao.listCategories();
+								for (Category c : list) {
+								%>
+								<option value="<%=c.getCategoryId()%>"><%=c.getCategoryTitle()%></option>
+
+								<%
+									}
+								%>
 
 							</select>
 						</div>
 
 
 						<div class="container text-center">
-							<button type="submit" class="btn btn-outline-success">Add Product</button>
+							<button type="submit" class="btn btn-outline-success">Add
+								Product</button>
 						</div>
 
 					</form>
 
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>

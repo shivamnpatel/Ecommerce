@@ -2,6 +2,7 @@
 <%@page import="com.learn.ecommerce.dao.CategoryDao"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +37,7 @@
 									<thead class="thead-light text-center">
 										<tr>
 											<th>Category Name</th>
-											<th>Action</th>
+											<th colspan="2">Action</th>
 										</tr>
 									</thead>
 							<tr>
@@ -57,10 +58,15 @@
 									<input type="hidden" name="categoryServlet" value="removeCategory">
 										<button class="btn btn-danger btn-sm" name="removeCategoryBtn"
 											value="<%=category.getCategoryId() %>">Remove</button>
-									</form>	
+									</form>		
 								</td>
-								
-							
+							<!-- 	<td>
+									<form action="Category?categoryId=jstlhere>" name="f1" method="post">
+									<input type="hidden" name="categoryServlet" value="updateCategory">
+										<button class="btn btn-danger btn-sm" name="updateCategoryBtn">Update</button>
+									</form>
+								</td>
+							-->
 							</tr>
 						
 							<%

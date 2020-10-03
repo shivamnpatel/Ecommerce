@@ -1,18 +1,7 @@
+<%@ page isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="com.learn.ecommerce.model.User"%>
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 
-	User user = (User) session.getAttribute("currentUser");
-	if (user == null) {
-		session.setAttribute("message", "Please Login to complete checkout!!");
-		response.sendRedirect("login.jsp");
-		return;
-	}
-%>
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -23,6 +12,20 @@
 
 </head>
 <body>
+
+	<%
+		response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+		User user = (User) session.getAttribute("currentUser");
+	%>
+	<c:if test="${sessionScope.currentUser == null }">
+		<c:set var="message" value="Please Login to complete checkout" scope="session"></c:set>
+		<c:redirect url="login.jsp"/>
+	</c:if>
+	
+	<c:if test="${sessionScope.cartItems == null }">
+		<c:redirect url="index.jsp"/>
+	</c:if>
+
 
 	<div class="container">
 
@@ -45,7 +48,7 @@
 							int finalPrice=0;
 							ArrayList<Cart> cartListItems = new ArrayList<Cart>();
 							cartListItems = (ArrayList<Cart>) session.getAttribute("cartItems");
-							if (cartListItems.size()!=0) 
+							if (cartListItems!=null && cartListItems.size()!=0 ) 
 							{
 						%>
 						

@@ -15,6 +15,7 @@ com\learn\ecommerce\controllers\ProductImageServlet.class
 com\learn\ecommerce\dao\CategoryDao.class
 com\learn\ecommerce\controllers\CartServlet.class
 com\learn\ecommerce\dao\UserDao.class
+com\learn\ecommerce\controllers\AdminServlet.class
 com\learn\ecommerce\helper\DescriptionHelper.class
 com\learn\ecommerce\model\Category.class
 com\learn\ecommerce\model\User.class

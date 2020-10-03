@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 				// admin 
 				if(user.getUserType().equals("admin")) 
 				{
-					String adminPage = "/WEB-INF/views/admin.jsp";
+					String adminPage = "admin.jsp";
 					RequestDispatcher dispatcher = request.getRequestDispatcher(adminPage);
 					dispatcher.forward(request, response);
 				}
