@@ -1,2 +1,4 @@
-# Ecommerce Site
-An Ecommerce website built using Java technologies like JSP, Servlet &amp; Hibernate. JSP MVC design Pattern is used in this project.
+# Ecommerce Website
+An Ecommerce web application built using Java technologies like JSP, Servlet &amp; Hibernate.
+
+### Live: [Ecommerce](http://65.0.13.175:8080/ecommerce/)
