@@ -1,4 +1,5 @@
 # Ecommerce Website
-An Ecommerce web application built using Java technologies like JSP, Servlet &amp; Hibernate.
 
-### Live: [Ecommerce](http://65.0.13.175:8080/ecommerce/)
+* An e-commerce website for electronic items built using Java technologies like Servlet, JSP and Hibernate.
+* Users can shop from the products across various categories.
+* Admin can manage all the Categories, Products, Orders & Users.
